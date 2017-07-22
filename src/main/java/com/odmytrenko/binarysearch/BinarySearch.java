@@ -11,11 +11,17 @@ public class BinarySearch {
                 if (target == array[mid]) {
                     return mid;
                 } else {
-                    if ((array[low] < array[high - 1] && target < array[mid]) || (target < array[mid] &&
-                            target > array[low] || target > array[mid] && target > array[high - 1])) {
-                        high = mid;
+                    if (target < array[mid]) {
+                        if (target > array[high - 1]) {
+                            high = mid;
+                        }
                     } else {
-                        low = mid + 1;
+                        if (array[low] < array[high - 1] || target > array[low]) {
+                            high = mid;
+                        } else {
+                            low = mid + 1;
+                        }
+
                     }
                 }
             }
